@@ -9,9 +9,9 @@
    ```
 3. Clone the repository using Git:
    ```sh
-   git clone https://github.com/one-project-one-month/online-job-finder-laravel.git
+   git clone https://github.com/KMSoe/stock-manager.git
    ```
-4. Move into the project directory:
+4. change directory into the project directory:
    ```sh
    cd project_name
    ```
@@ -19,10 +19,12 @@
 
 ## Environment Configuration
 
-1. Copy the `.env.example` file to create a new `.env` file:
+Copy the `.env.example` file to create a new `.env` file:
    ```sh
    cp .env.example .env
    ```
+
+   And replace the database credentials.
 
 
 ## Running the Application
