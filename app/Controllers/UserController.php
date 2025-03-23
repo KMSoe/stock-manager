@@ -148,7 +148,8 @@ class UserController extends Controller
 
         $validator->required('name')
             ->required('email')->email('email')->unique('email', 'users', 'email', $_POST['id'])
-            ->required('password')->minLength('password', 6);
+            ->required('password')->minLength('password', 6)
+            ->required('role_id')->exists('role_id', 'roles', 'id');
 
         SessionHelper::startSession();
 

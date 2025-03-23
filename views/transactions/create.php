@@ -16,11 +16,6 @@ use App\Helpers\SessionHelper;
                 $errors = SessionHelper::getValidationErrors() ?? [];
                 $old = SessionHelper::getOldValues() ?? [];
             ?>
-    
-            
-            
-
-            
 
             <div class="mb-3">
                 <label for="item_id" class="form-label">Item</label>

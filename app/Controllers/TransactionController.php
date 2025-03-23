@@ -85,9 +85,10 @@ class TransactionController extends Controller
 
         $validator = new Validator($_POST);
 
-        $validator->required('item_id')
-            ->required('transaction_type')
-            ->required('quantity');
+        $validator
+            ->required('item_id')->exists('item_id', 'items', 'id')
+            ->required('transaction_type')->in('transaction_type', array_map(fn($case) => $case->name, TransactionType::cases()))
+            ->required('quantity')->greaterThan('quantity', 0);
 
         SessionHelper::startSession();
 
@@ -95,7 +96,7 @@ class TransactionController extends Controller
             SessionHelper::setValidationErrors($validator->errors());
             SessionHelper::setOldValues($_POST);
 
-            header('Location: /items/create');
+            header('Location: /transactions/create');
             exit;
         }
 

@@ -85,8 +85,7 @@ class ItemController extends Controller
         $validator = new Validator($_POST);
 
         $validator->required('name')
-            ->required('quantity')
-            ->required('price')
+            ->required('price')->greaterThan('price', 0)
             ->required('category_id')->exists('category_id', 'categories', 'id');
 
         SessionHelper::startSession();
@@ -147,9 +146,9 @@ class ItemController extends Controller
         $validator = new Validator($_POST);
 
         $validator->required('name')
-            ->required('quantity')
+            ->required('price')->greaterThan('price', 0)
             ->required('price')
-            ->required('category_id');
+            ->required('category_id')->exists('category_id', 'categories', 'id');
 
         SessionHelper::startSession();
 

@@ -20,6 +20,36 @@ class Validator {
         return $this;
     }
 
+    public function validateNumeric($field) {
+        if (!is_numeric($this->data[$field])) {
+            $this->addError($field, "The $field field must be numeric.");
+        }
+        return $this;
+    }
+
+    public function minValue($field, $minValue) {
+        if ($this->data[$field] < $minValue) {
+            $this->addError($field, "The $field field must be at least $minValue.");
+        }
+        return $this;
+    }
+
+    public function greaterThan($field, $value) {
+        if ($this->data[$field] <= $value) {
+            $this->addError($field, "The $field field must be greater than $value.");
+        }
+        return $this;
+    }
+
+    public function in($field, $array) {
+        if (!in_array($this->data[$field], $array)) {
+            $values = implode(',', $array);
+            $this->addError($field, "The $field field must be one of $values.");
+        }
+        return $this;
+    }
+
+
     public function exists($field, $table, $column) {
         $sql = "SELECT COUNT(*) FROM $table WHERE $column = :value;";
         $stmt = $this->db->prepare($sql);
