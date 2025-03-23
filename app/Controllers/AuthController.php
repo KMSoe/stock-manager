@@ -48,7 +48,8 @@ class AuthController extends Controller
 
         $user = $this->userService->findByEmail($email);
 
-        unset($_SESSION['errors']);
+        unset($_SESSION['validation_errors']);
+        unset($_SESSION['old']);
 
         SessionHelper::startSession();
 
