@@ -3,8 +3,19 @@ namespace App\Containers;
 
 class ServiceContainer
 {
+    /**
+     * Array to store bindings for services.
+     * 
+     * @var array  
+     */
+    private array $bindings = [];
+    /**
+     * Array to store singleton instances.
+     * 
+     * @var array  
+     */
+    private array $singletons = [];
     private static $instance;
-
 
     private function __construct()
     {
@@ -19,19 +30,6 @@ class ServiceContainer
 
         return self::$instance;
     }
-
-     /**
-     * Array to store bindings for services.
-     * 
-     * @var array  
-     */
-    private array $bindings = [];
-    /**
-     * Array to store singleton instances.
-     * 
-     * @var array  
-     */
-    private array $singletons = [];
 
     public function bind(string $abstract, object|callable|string $concrete): void
     {
