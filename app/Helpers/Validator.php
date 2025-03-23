@@ -81,9 +81,7 @@ class Validator {
             $stmt->bindParam(':exception', $exception);
         }
         
-        $stmt->execute([
-            'value' => $this->data[$field],
-        ]);
+        $stmt->bindParam(':value', $this->data[$field]);
         
         $count = $stmt->fetchColumn() ?? 0;
 
