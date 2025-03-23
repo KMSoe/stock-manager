@@ -22,6 +22,7 @@
 Copy the `.env.example` file to create a new `.env` file:
    ```sh
    cp .env.example .env
+   composer install
    ```
 
    And replace the database credentials.
