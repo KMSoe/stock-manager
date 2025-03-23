@@ -35,9 +35,10 @@ class AuthController extends Controller
             ->required('password');
 
         SessionHelper::startSession();
+        SessionHelper::setOldValues($_POST);
+
         if ($validator->fails()) {
             SessionHelper::setValidationErrors($validator->errors());
-            $_SESSION['old']               = $_POST;
 
             HTTP::redirect("/auth/login");
         }
